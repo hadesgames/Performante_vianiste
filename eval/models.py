@@ -9,7 +9,7 @@ class Contest(models.Model):
 
 class Problem(models.Model):
 
-  solution = models.CharField(max_length= 10)
+  solution = models.CharField(max_length = 10)
   
   value = models.IntegerField(default = 20)
   wrong = models.IntegerField(default = 0)
@@ -29,6 +29,8 @@ class Answer(models.Model):
   team = models.ForeignKey(Team)
   done = models.BooleanField(default = False)
   problem = models.ForeignKey(Problem)
+  solution = models.CharField(max_length = 10)
+  
   
 
 

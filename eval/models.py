@@ -27,7 +27,9 @@ class Answer(models.Model):
 
   time = models.DateTimeField()
   team = models.ForeignKey(Team)
-  Problem = models.ForeignKey(Problem)
+  done = models.BooleanField(default = False)
+  problem = models.ForeignKey(Problem)
+  
 
 
 

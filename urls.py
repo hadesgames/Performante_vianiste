@@ -5,8 +5,8 @@ from django.conf.urls.defaults import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url( r'/api/problems/(\d)+', 'eval.api.problems' ),
-                       url( r'/api/teams/(\d)+', 'eval.api.teams'),
+                       url( r'api/problems/(\d)+', 'eval.api.problems' ),
+                       url( r'api/teams/(\d)+', 'eval.api.teams'),
     # Examples:
     # url(r'^$', 'Performante_vianiste.views.home', name='home'),
     # url(r'^Performante_vianiste/', include('Performante_vianiste.foo.urls')),

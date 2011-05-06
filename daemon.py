@@ -16,14 +16,14 @@ def do_work(answer):
   problem = answer.problem
   contest = problem.contest
   
-  if contest.time_passed().minutes >= duration :
+  if contest.time_passed_minutes() >= duration :
     answer.status = 3
     answer.save()
     return
 
   #check if the the problem has already been answered by this team
 
-  if team.answer_set.filter(status = 2. problem = problem).exists() :
+  if team.answer_set.filter(status = 2, problem = problem).exists() :
     answer.status = 3
     answer.save()
     return 

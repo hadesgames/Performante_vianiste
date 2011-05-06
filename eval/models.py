@@ -9,7 +9,9 @@ class Contest(models.Model):
   duration = models.IntegerField()
   fully_solved = models.IntegerField(default = 0)
   def time_passed(self):
-    return datetime.datetime.now() - self.start_time
+    return (datetime.datetime.now() - self.start_time).seconds
+  def time_passed_minutes(self):
+    return self.time_passed() / 60
   
 
 class Problem(models.Model):
@@ -24,10 +26,10 @@ class Problem(models.Model):
 
   def score_can_change(self):
     return ( self.corect == 0 and
-             self.contest.duration - self.contest.time_passed().minutes > 20 )
+             self.contest.duration - self.contest.time_passed_minutes() > 20 )
 
   def score(self):
-    extra_points = self.can_score_change() and self.contest.time_passed().minutes or 0  
+    extra_points = self.score_can_change() and self.contest.time_passed_minutes() or 0  
     return self.value + extra_points
     
     

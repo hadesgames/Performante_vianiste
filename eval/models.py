@@ -37,6 +37,7 @@ class Problem(models.Model):
 class Team(models.Model):
 
   name = models.CharField(max_length = 40)
+  contest = models.ForeignKey(Contest)
   score = models.IntegerField(default = 120 )
   special_score = models.IntegerField(default = 0)
   special_problem = models.ForeignKey(Problem)

@@ -1,0 +1,91 @@
+#problem_list
+{
+  padding-left:10px;
+}
+.row
+{
+  display:block; 
+  list-style-type:none; 
+  width: 2300px;
+  margin:0px;
+  padding:0px;
+  margin-bottom:10px;
+}
+.name
+{
+  width: 200px;
+  display: inline-block;
+  text-align: right;
+  vertical-align: middle;
+}
+.p_name
+{
+  margin:0px;
+  margin-right:10px;
+}
+.score
+{
+  margin:0px;
+  margin-left:10px;
+  display:inline-block;
+}
+.blue, .green
+{
+  display:inline-block;
+  padding:0px;
+  margin:0px;
+}
+.filler, .left_filler, .right_filler
+{
+  display:inline-block;
+  height:30px;
+  padding:0px;
+  margin:0px;
+}
+div.filler
+{
+}
+div.left_filler
+{
+  width:11px;
+}
+div.right_filler
+{
+  width:11px;
+}
+div.green .filler
+{
+  background-color:green;
+}
+div.blue .filler
+{
+  background-image:url("../images/blue.png");
+  background-repeat: repeat-x;
+}
+div.blue .left_filler
+{
+  background-image:url("../images/lcblue.png");
+  background-repeat: repeat-x;
+}
+div.blue .right_filler
+{
+  background-image:url("../images/rcblue.png");
+  background-repeat: repeat-x;
+
+}
+div.green .filler
+{
+  background-image:url("../images/green.png");
+  background-repeat: repeat-x;
+}
+div.green .left_filler
+{
+  background-image:url("../images/lcgreen.png");
+  background-repeat: repeat-x;
+}
+div.green .right_filler
+{
+  background-image:url("../images/rcgreen.png");
+  background-repeat: repeat-x;
+
+}

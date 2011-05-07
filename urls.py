@@ -8,6 +8,7 @@ urlpatterns = patterns('',
                        url( r'api/problems/(\d)+', 'eval.api.problems' ),
                        url( r'api/teams/(\d)+', 'eval.api.teams'),
                        url( r'problems/(\d)+', 'eval.views.problems'),
+                       url( r'teams/(\d)+', 'eval.views.teams'),
                        
     # Examples:
     # url(r'^$', 'Performante_vianiste.views.home', name='home'),

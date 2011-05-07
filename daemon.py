@@ -30,12 +30,11 @@ def do_work(answer):
 
   if problem.solution == answer.solution :
     #good answer
-    #TO DO : check that the same team doesn't summit the correct answer multiple times
     answer.status = 2
     
     points_gained = problem.score()
     try:
-      points_gained += bonus[problem.corect]
+      points_gained += bonus[problem.correct]
     except IndexError:
       pass
 
@@ -49,8 +48,9 @@ def do_work(answer):
       contest.save()
     
     # modify the problem
-    problem.value = problem.score()
-    problem.corect += 1
+    if problem.correct == 0:
+      problem.time_solved = contest.time_passed_minutes()
+    problem.correct += 1
     problem.save()
   else:
     #wrong answer

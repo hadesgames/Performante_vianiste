@@ -17,20 +17,25 @@ class Contest(models.Model):
 class Problem(models.Model):
 
   solution = models.CharField(max_length = 10)
-  
+  name = models.CharField(max_length = 30)
   value = models.IntegerField(default = 20)
-  corect = models.IntegerField(default = 0)
+  correct = models.IntegerField(default = 0)
+  # the minute in which the problem  was first solved
+  time_solved = models.IntegerField(default = 0)
   
   contest = models.ForeignKey(Contest)
     
 
   def score_can_change(self):
-    return ( self.corect == 0 and
+    return ( self.correct == 0 and
              self.contest.duration - self.contest.time_passed_minutes() > 20 )
 
   def score(self):
-    extra_points = self.score_can_change() and self.contest.time_passed_minutes() or 0  
-    return self.value + extra_points
+    time_points = (self.time_solved or 
+                  (self.score_can_change() and self.contest.time_passed_minutes()) or
+                  (self.correct == 0 and self.contest.duration - 20 ))
+
+    return self.value + time_points
     
     
 

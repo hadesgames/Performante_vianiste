@@ -41,8 +41,20 @@ def teams(request, contest_id):
 
   return HttpResponse(json.dumps(_get_object_list(team_list, fields, function_fields)))
 
+def tabel(request, contest_id):
+  #This is probably very inefficient.
+  problem_list = models.Contest.objects.get(pk = contest_id).problem_set.all()
+  
+  team_list = models.Contest.objects.get(pk = contest_id).team_set.all()
+  output=[]
+  for team in team_list:
+    row=[]
+    for problem in problem_list:
+      element={}
+      #Inefficient part : 
+      element["wrong_tries"] = models.Answer.objects.filter(team = team, problem = problem, status = 1).count()
+      element["solved"] = models.Answer.objects.filter(team = team, problem = problem, status = 2).count()
+      row.append(element);
+    output.append(row)
 
-    
- 
-  
-  
+  return HttpResponse(json.dumps(output))

@@ -7,6 +7,7 @@ from django.conf.urls.defaults import patterns, include, url
 urlpatterns = patterns('',
                        url( r'api/problems/(\d)+', 'eval.api.problems' ),
                        url( r'api/teams/(\d)+', 'eval.api.teams'),
+                       url( r'api/tabel/(\d)+', 'eval.api.tabel'),
                        url( r'problems/(\d)+', 'eval.views.problems'),
                        url( r'teams/(\d)+', 'eval.views.teams'),
                        

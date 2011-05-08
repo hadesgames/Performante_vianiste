@@ -41,7 +41,7 @@ def teams(request, contest_id):
 
   return HttpResponse(json.dumps(_get_object_list(team_list, fields, function_fields)))
 
-def tabel(request, contest_id):
+def table(request, contest_id):
   #This is probably very inefficient.
   problem_list = models.Contest.objects.get(pk = contest_id).problem_set.all()
   

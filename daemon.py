@@ -16,7 +16,7 @@ def do_work(answer):
   problem = answer.problem
   contest = problem.contest
   
-  if contest.time_passed_minutes() >= duration :
+  if contest.time_passed_minutes() >= contest.duration :
     answer.status = 3
     answer.save()
     return

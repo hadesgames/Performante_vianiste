@@ -1,0 +1,39 @@
+<html>
+<head> 
+  {% block "css" %}
+  <link rel="stylesheet" type="text/css" href="/sever/static/css/style.css">
+  {% endblock "css" %}
+  <script src="/sever/static/dojo/dojo.js" data-dojo-config="isDebug: true,parseOnLoad: true"></script>
+  <script src="/sever/static/js/timer.js"></script>
+  <script>
+    api_address = "{% block "api_address" %}{% endblock %}" ;
+  </script>
+  {% block "js" %}
+  <script src="/sever/static/js/bars.js">
+  </script>
+  {% endblock %}
+  
+  <script>
+    {% block "js_init" %}
+    function init(){
+
+      dojo.require("dojox.timing")
+      var t = new dojox.timing.Timer(3000);
+      t.onStart = refresh_init;
+      t.onTick = refresh;
+      t.start()
+    }
+    {% endblock %}
+    dojo.ready(function(){
+        timer_init();
+        init();
+        });
+  </script>
+</head>
+<body>
+<p id = "timer"> </p>
+{% block "content" %}
+  <ul id = "list" style="list-style-type:None">
+  </ul>
+{% endblock %}
+</html>

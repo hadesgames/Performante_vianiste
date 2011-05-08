@@ -2,10 +2,9 @@
 var time_left= new Date(0,0,0,1,2,3)
 function timer_redisplay()
 {
-    node = dojo.byId("timer");
-
-    node.innerHTML=dojo.date.locale.format(time_left,{ selector: "date",
-                                                       datePattern: "H:m:s"});
+    dojo.byId("timer_hours").innerHTML = time_left.getHours();
+    dojo.byId("timer_minutes").innerHTML = time_left.getMinutes();
+    dojo.byId("timer_seconds").innerHTML = time_left.getSeconds();
 }
 function timer_tick()
 {

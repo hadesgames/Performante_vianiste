@@ -2,6 +2,7 @@
 <head>
   
   <link rel="stylesheet" type="text/css" href="/sever/static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/sever/static/css/timer.css">
   <script src="/sever/static/dojo/dojo.js" data-dojo-config="isDebug: true,parseOnLoad: true"></script>
   <script src="/sever/static/js/timer.js"></script>
   <script src="/sever/static/js/init.js"/></script>
@@ -84,7 +85,7 @@
   </script>
 </head>
 <body>
-<p id = "timer"> </p>
+{% include "timer.html" %}
 <ul id = "problem_list" style="list-style-type:None">
 </ul>
 </html>

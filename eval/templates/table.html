@@ -1,102 +1,14 @@
-<html>
-<head>
-  
-  <link rel="stylesheet" type="text/css" href="/sever/static/css/style.css">
+{% extends "base.html" %}
+{% block "css" %}
   <link rel="stylesheet" type="text/css" href="/sever/static/css/table.css">
-  <script src="/sever/static/dojo/dojo.js" data-dojo-config="isDebug: true,parseOnLoad: true"></script>
-  <script src="/sever/static/js/timer.js"></script>
-  <script src="/sever/static/js/init.js"/></script>
-
-  <script>
-    function table_display_refresh(data)
-    {
-      for (team_id in data)
-        for (problem_id in data[team_id].score_list)
-        {
-          wrong = data[team_id].score_list[problem_id].wrong_tries;
-          correct = data[team_id].score_list[problem_id].solved;
-          if (wrong == 0 && correct == 0)
-            continue;
-
-          cell = dojo.byId("cell_"+team_id+"_"+problem_id);
-
-          if ( correct)
-            cell.classList[ cell.classList.length - 1] = "correct";
-          else
-            cell.classList[ cell.classList.length - 1] = "wrong";
-          cell.innerHTML = correct + wrong;
-
-        }
-    }
-    function table_display_init(data){
-      // this function creates  the table
-      table = dojo.byId("score_table");
-      // table headers: 
-      if (data.length == 0) 
-        return ;
-      row = dojo.create("tr",{},table);
-      dojo.create("th",{},row);
-     
-      for (i in data[0].score_list)
-        dojo.create("th",{
-                          class: "score_table_header",
-                          innerHTML: (parseInt(i) + 1)},row);
-
-      for (team_id in data)
-      {
-        row=dojo.create("tr",{id: "row_"+team_id},table);
-
-        dojo.create("td",{
-                          class:"cell_name",
-                          innerHTML:data[team_id].name
-                        },row);
-
-        for (problem_id in data[team_id].score_list)
-        {
-          if (team_id % 2)
-            color = "white";
-          else
-            color = "blue";
-          cell=dojo.create("td",{ 
-                                  id : "cell_"+team_id+"_"+problem_id,
-                                  class : "cell_score " + color,
-                                },row);
-        }
-      }
-    }
-
-    
-    function table_refresh_init()
-    {
-      dojo.xhrGet({
-            url: "/sever/api/table/1",
-            handleAs: "json",
-            load: table_display_init,
-            error: function (){ alert("QQ");} });
-    }
-    function table_refresh(){
-      dojo.xhrGet({
-            url: "/sever/api/table/1",
-            handleAs: "json",
-            load: table_display_refresh});
-
-    }
-    function table_init(){
-
-      dojo.require("dojox.timing")
-      var t = new dojox.timing.Timer(3000);
-      t.onStart = table_refresh_init;
-      t.onTick = table_refresh;
-      t.start()
-    }
-    dojo.ready(function(){
-        timer_init();
-        table_init()
-        });
-  </script>
-</head>
-<body>
-<p id = "timer"> </p>
+{% endblock %}
+{% block "js" %}
+<script src="/sever/static/js/table.js">
+</script>
+{% endblock %}
+{% block "content" %}
 <table id="score_table">
 </table>
-</html>
+{% endblock %}
+
+

@@ -1,0 +1,21 @@
+.timer 
+{
+  width:180px;
+  float:right;
+  background-color:#EEE;
+  border: 1px solid #CCC;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+}
+.timer_value
+{
+  font-size:200%;
+}
+.timer_element
+{
+  width:33%;
+  font-size:75%;
+  float: left;
+  text-align:center;
+  display:block;
+}

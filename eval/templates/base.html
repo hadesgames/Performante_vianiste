@@ -1,0 +1,41 @@
+<html>
+<head> 
+  <link rel="stylesheet" type="text/css" href="/sever/static/css/timer.css">
+  {% block "css" %}
+  <link rel="stylesheet" type="text/css" href="/sever/static/css/style.css">
+  {% endblock "css" %}
+  <script src="/sever/static/dojo/dojo.js" data-dojo-config="isDebug: true,parseOnLoad: true"></script>
+  <script src="/sever/static/js/timer.js"></script>
+  <script>
+    api_address = "{{ api_address }}"; 
+    time_left = new Date(0,0,0,0,0,{{ time_left }});
+  </script>
+  {% block "js" %}
+  <script src="/sever/static/js/bars.js">
+  </script>
+  {% endblock %}
+  
+  <script>
+    {% block "js_init" %}
+    function init(){
+
+      dojo.require("dojox.timing")
+      var t = new dojox.timing.Timer(3000);
+      t.onStart = refresh_init;
+      t.onTick = refresh;
+      t.start()
+    }
+    {% endblock %}
+    dojo.ready(function(){
+        timer_init();
+        init();
+        });
+  </script>
+</head>
+<body>
+{% include "timer.html" %}
+{% block "content" %}
+  <ul id = "list" style="list-style-type:None">
+  </ul>
+{% endblock %}
+</html>

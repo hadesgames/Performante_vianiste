@@ -57,7 +57,7 @@ def do_work(answer):
     answer.status = 1
     
     points_gained = -10
-    problem.value += problem.can_score_change() and 2
+    problem.value += problem.can_score_change() and -2
     problem.save()
     
   if problem == team.special_problem:

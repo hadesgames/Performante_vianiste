@@ -8,6 +8,7 @@
   <script src="/sever/static/js/timer.js"></script>
   <script>
     api_address = "{% block "api_address" %}{% endblock %}" ;
+    time_left = new Date(0,0,0,0,0,{{ time_left }});
   </script>
   {% block "js" %}
   <script src="/sever/static/js/bars.js">

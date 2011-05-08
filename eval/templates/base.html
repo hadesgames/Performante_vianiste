@@ -1,5 +1,6 @@
 <html>
 <head> 
+  <link rel="stylesheet" type="text/css" href="/sever/static/css/timer.css">
   {% block "css" %}
   <link rel="stylesheet" type="text/css" href="/sever/static/css/style.css">
   {% endblock "css" %}
@@ -31,7 +32,7 @@
   </script>
 </head>
 <body>
-<p id = "timer"> </p>
+{% include "timer.html" %}
 {% block "content" %}
   <ul id = "list" style="list-style-type:None">
   </ul>

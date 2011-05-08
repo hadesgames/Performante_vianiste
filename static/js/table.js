@@ -60,14 +60,14 @@
     function refresh_init()
     {
       dojo.xhrGet({
-            url: "/sever/api/table/1",
+            url: api_address,
             handleAs: "json",
             load: display_init,
             error: function (){ alert("QQ");} });
     }
     function refresh(){
       dojo.xhrGet({
-            url: "/sever/api/table/1",
+            url: api_address,
             handleAs: "json",
             load: display_refresh});
 

@@ -7,7 +7,7 @@
   <script src="/sever/static/dojo/dojo.js" data-dojo-config="isDebug: true,parseOnLoad: true"></script>
   <script src="/sever/static/js/timer.js"></script>
   <script>
-    api_address = "{% block "api_address" %}{% endblock %}" ;
+    api_address = "{{ api_address }}"; 
   </script>
   {% block "js" %}
   <script src="/sever/static/js/bars.js">

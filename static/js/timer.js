@@ -13,7 +13,8 @@ function timer_tick()
     {
       timer_timer.stop()
       timer_span=dojo.byId("timer");
-      timer_span.innerHTML="Concursul s-a terminat!"
+      timer_span.innerHTML="Concursul s-a terminat!";
+      return ;
     }
 
     timer_redisplay();

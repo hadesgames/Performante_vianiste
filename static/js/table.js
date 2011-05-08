@@ -11,9 +11,9 @@
           cell = dojo.byId("cell_"+team_id+"_"+problem_id);
 
           if ( correct)
-            cell.classList[ cell.classList.length - 1] = "correct";
+            cell.className =  "cell_score correct";
           else
-            cell.classList[ cell.classList.length - 1] = "wrong";
+            cell.className = "cell_score wrong";
           cell.innerHTML = correct + wrong;
 
         }
@@ -53,6 +53,7 @@
                                 },row);
         }
       }
+      display_refresh(data);
     }
 
     

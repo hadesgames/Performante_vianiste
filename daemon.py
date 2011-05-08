@@ -1,4 +1,5 @@
 from django.core.management import setup_environ
+from django.core.exceptions import ObjectDoesNotExist
 import settings
 
 setup_environ(settings)
@@ -37,7 +38,6 @@ def do_work(answer):
       points_gained += bonus[problem.correct]
     except IndexError:
       pass
-
     team.solved+=1
     if team.solved == contest.problem_set.count():
       try:
@@ -46,7 +46,6 @@ def do_work(answer):
         pass
       contest.fully_solved += 1
       contest.save()
-    
     # modify the problem
     if problem.correct == 0:
       problem.time_solved = contest.time_passed_minutes()
@@ -59,10 +58,12 @@ def do_work(answer):
     points_gained = -10
     problem.value += problem.can_score_change() and 2
     problem.save()
-    
-  if problem == team.special_problem:
-    points_gained *= 2
-    team.special_score += points_gained
+  try: 
+    if problem == team.special_problem:
+      points_gained *= 2
+      team.special_score += points_gained
+  except ObjectDoesNotExist:
+    pass
     
   team.score += points_gained
   team.save()

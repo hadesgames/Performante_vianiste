@@ -35,7 +35,7 @@ def problems(request, contest_id):
   return HttpResponse(json.dumps(_get_object_list(problem_list, fields, function_fields)))
 
 def teams(request, contest_id):
-  fields = ["name", "score", "special_score"]
+  fields = ["name", "score"]
   function_fields = []
   team_list = models.Contest.objects.get(pk = contest_id).team_set.all()
 

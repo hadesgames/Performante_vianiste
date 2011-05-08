@@ -12,6 +12,8 @@ class Contest(models.Model):
     return (datetime.datetime.now() - self.start_time).seconds
   def time_passed_minutes(self):
     return self.time_passed() / 60
+  def time_remaining(self):
+    return self.duration * 60 - self.time_passed();
   
 
 class Problem(models.Model):

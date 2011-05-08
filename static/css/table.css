@@ -3,6 +3,15 @@
   padding:4px 5px;
   margin: 0px auto;
 }
+.score_table_header
+{
+  padding:4px 5px;
+  background-color: #acf;
+  font-weight: bold;
+  text-align: center;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
 .cell_name
 {
   padding:4px 5px;

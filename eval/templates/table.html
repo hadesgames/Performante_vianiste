@@ -29,8 +29,19 @@
         }
     }
     function table_display_init(data){
-      //lets crete the tabel
+      // this function creates  the table
       table = dojo.byId("score_table");
+      // table headers: 
+      if (data.length == 0) 
+        return ;
+      row = dojo.create("tr",{},table);
+      dojo.create("th",{},row);
+     
+      for (i in data[0].score_list)
+        dojo.create("th",{
+                          class: "score_table_header",
+                          innerHTML: (parseInt(i) + 1)},row);
+
       for (team_id in data)
       {
         row=dojo.create("tr",{id: "row_"+team_id},table);

@@ -9,16 +9,22 @@ function timer_redisplay()
 function timer_tick()
 {
     time_left.setSeconds( time_left.getSeconds() - 1);
+    if (time_left <= new Date(0,0,0,0,0,0) )
+    {
+      timer_timer.stop()
+      timer_span=dojo.byId("timer");
+      timer_span.innerHTML="Concursul s-a terminat!"
+    }
+
     timer_redisplay();
 }
 
 function timer_init()
 { 
-    dojo.require("dojo.date.locale");
     dojo.require("dojox.timing");
-    var t = new dojox.timing.Timer(1000)
-    t.onStart = timer_redisplay;
-    t.onTick  = timer_tick;
-    t.start()
+    timer_timer = new dojox.timing.Timer(1000)
+    timer_timer.onStart = timer_redisplay;
+    timer_timer.onTick  = timer_tick;
+    timer_timer.start()
 }
 

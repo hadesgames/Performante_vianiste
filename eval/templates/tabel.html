@@ -1,0 +1,72 @@
+<html>
+<head>
+  
+  <link rel="stylesheet" type="text/css" href="/sever/static/css/style.css">
+  <script src="/sever/static/dojo/dojo.js" data-dojo-config="isDebug: true,parseOnLoad: true"></script>
+  <script src="/sever/static/js/timer.js"></script>
+  <script src="/sever/static/js/init.js"/></script>
+
+  <script>
+    function table_display_refresh(data)
+    {
+      for (id in data)
+      {
+        if (data[id].score != dojo.byId("row_score_"+id).innerHTML)
+        {
+          dojo.byId("row_score_"+id).innerHTML = data[id].score;
+          dojo.animateProperty({
+                  node: dojo.byId("row_filler_"+id),
+                  properties: { width : data[id].score }}).play();
+        }
+      }
+
+    }
+    function table_display_init(data){
+      //lets crete the tabel
+      table = dojo.byId("score_table");
+      for (team_id in data)
+      {
+        row=dojo.create("tr",{id: "row_"+team_id},table);
+
+        for (problem_id in data)
+
+        
+
+      }
+    }
+
+    
+    function table_refresh_init()
+    {
+      dojo.xhrGet({
+            url: "/sever/api/table/1",
+            handleAs: "json",
+            load: table_display_init,
+            error: function (){ alert("QQ");} });
+    }
+    function table_refresh(){
+      dojo.xhrGet({
+            url: "/sever/api/problems/1",
+            handleAs: "json",
+            load: problems_display_refresh});
+
+    }
+    function table_init(){
+
+      dojo.require("dojox.timing")
+      var t = new dojox.timing.Timer(3000);
+      t.onStart = table_refresh_init;
+      t.onTick = table_refresh;
+      t.start()
+    }
+    dojo.ready(function(){
+        timer_init();
+        table_init
+        });
+  </script>
+</head>
+<body>
+<p id = "timer"> </p>
+<table id="score_table">
+</table>
+</html>

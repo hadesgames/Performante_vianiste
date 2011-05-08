@@ -10,6 +10,7 @@ urlpatterns = patterns('',
                        url( r'api/tabel/(\d)+', 'eval.api.tabel'),
                        url( r'problems/(\d)+', 'eval.views.problems'),
                        url( r'teams/(\d)+', 'eval.views.teams'),
+                       url( r'table/(\d)+', 'eval.views.table'),
                        
     # Examples:
     # url(r'^$', 'Performante_vianiste.views.home', name='home'),

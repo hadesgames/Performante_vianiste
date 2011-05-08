@@ -23,15 +23,28 @@
     }
     function table_display_init(data){
       //lets crete the tabel
+      alert("a intrat");
       table = dojo.byId("score_table");
       for (team_id in data)
       {
         row=dojo.create("tr",{id: "row_"+team_id},table);
 
-        for (problem_id in data)
+        dojo.create("td",{
+                          class:"name_cell",
+                          innerHTML:data[team_id].name
+                        },row);
 
-        
-
+        for (problem_id in data[team_id].score_list)
+        {
+          if (team_id % 2)
+            color = "blue";
+          else
+            color = "white";
+          cell=dojo.create("td",{ 
+                                  id : "cell_"+team_id+"_"+problem_id,
+                                  class : "score_cell " + color,
+                                },row);
+        }
       }
     }
 
@@ -61,7 +74,7 @@
     }
     dojo.ready(function(){
         timer_init();
-        table_init
+        table_init()
         });
   </script>
 </head>

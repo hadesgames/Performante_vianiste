@@ -2,6 +2,7 @@
 <head>
   
   <link rel="stylesheet" type="text/css" href="/sever/static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/sever/static/css/table.css">
   <script src="/sever/static/dojo/dojo.js" data-dojo-config="isDebug: true,parseOnLoad: true"></script>
   <script src="/sever/static/js/timer.js"></script>
   <script src="/sever/static/js/init.js"/></script>
@@ -9,40 +10,45 @@
   <script>
     function table_display_refresh(data)
     {
-      for (id in data)
-      {
-        if (data[id].score != dojo.byId("row_score_"+id).innerHTML)
+      for (team_id in data)
+        for (problem_id in data[team_id].score_list)
         {
-          dojo.byId("row_score_"+id).innerHTML = data[id].score;
-          dojo.animateProperty({
-                  node: dojo.byId("row_filler_"+id),
-                  properties: { width : data[id].score }}).play();
-        }
-      }
+          wrong = data[team_id].score_list[problem_id].wrong_tries;
+          correct = data[team_id].score_list[problem_id].solved;
+          if (wrong == 0 && correct == 0)
+            continue;
 
+          cell = dojo.byId("cell_"+team_id+"_"+problem_id);
+
+          if ( correct)
+            cell.classList[ cell.classList.length - 1] = "correct";
+          else
+            cell.classList[ cell.classList.length - 1] = "wrong";
+          cell.innerHTML = correct + wrong;
+
+        }
     }
     function table_display_init(data){
       //lets crete the tabel
-      alert("a intrat");
       table = dojo.byId("score_table");
       for (team_id in data)
       {
         row=dojo.create("tr",{id: "row_"+team_id},table);
 
         dojo.create("td",{
-                          class:"name_cell",
+                          class:"cell_name",
                           innerHTML:data[team_id].name
                         },row);
 
         for (problem_id in data[team_id].score_list)
         {
           if (team_id % 2)
-            color = "blue";
-          else
             color = "white";
+          else
+            color = "blue";
           cell=dojo.create("td",{ 
                                   id : "cell_"+team_id+"_"+problem_id,
-                                  class : "score_cell " + color,
+                                  class : "cell_score " + color,
                                 },row);
         }
       }
@@ -59,9 +65,9 @@
     }
     function table_refresh(){
       dojo.xhrGet({
-            url: "/sever/api/problems/1",
+            url: "/sever/api/table/1",
             handleAs: "json",
-            load: problems_display_refresh});
+            load: table_display_refresh});
 
     }
     function table_init(){

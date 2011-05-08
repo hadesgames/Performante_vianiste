@@ -1,0 +1,32 @@
+#score_table
+{
+  padding:4px 5px;
+  margin: 0px auto;
+}
+.cell_name
+{
+  padding:4px 5px;
+  background-color: #acf;
+  font-weight: bold;
+  text-align:right;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.cell_score
+{
+  width:30px;
+  text-align: center;
+  padding: 4px 5px;
+}
+.blue
+{
+  background-color: #cef;
+}
+.correct
+{
+  background-color: #9cf198;
+}
+.wrong
+{
+  background-color: #fca9a9;
+}

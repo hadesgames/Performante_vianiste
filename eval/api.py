@@ -48,13 +48,13 @@ def tabel(request, contest_id):
   team_list = models.Contest.objects.get(pk = contest_id).team_set.all()
   output=[]
   for team in team_list:
-    row=[]
+    row={"name" : team.name, "score_list":[]}
     for problem in problem_list:
       element={}
       #Inefficient part : 
       element["wrong_tries"] = models.Answer.objects.filter(team = team, problem = problem, status = 1).count()
       element["solved"] = models.Answer.objects.filter(team = team, problem = problem, status = 2).count()
-      row.append(element);
+      row["score_list"].append(element);
     output.append(row)
 
   return HttpResponse(json.dumps(output))

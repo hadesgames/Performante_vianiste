@@ -1,17 +1,17 @@
 <html>
 <head> 
-  <link rel="stylesheet" type="text/css" href="/sever/static/css/timer.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/timer.css">
   {% block "css" %}
-  <link rel="stylesheet" type="text/css" href="/sever/static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css">
   {% endblock "css" %}
-  <script src="/sever/static/dojo/dojo.js" data-dojo-config="isDebug: true,parseOnLoad: true"></script>
-  <script src="/sever/static/js/timer.js"></script>
+  <script src="{{ STATIC_URL }}dojo/dojo.js" data-dojo-config="isDebug: true,parseOnLoad: true"></script>
+  <script src="{{ STATIC_URL }}js/timer.js"></script>
   <script>
     api_address = "{{ api_address }}"; 
     time_left = new Date(0,0,0,0,0,{{ time_left }});
   </script>
   {% block "js" %}
-  <script src="/sever/static/js/bars.js">
+  <script src="{{ STATIC_URL }}js/bars.js">
   </script>
   {% endblock %}
   

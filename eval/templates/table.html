@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block "css" %}
-  <link rel="stylesheet" type="text/css" href="/sever/static/css/table.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/table.css">
 {% endblock %}
 {% block "js" %}
-<script src="/sever/static/js/table.js">
+<script src="{{ STATIC_URL }}js/table.js">
 </script>
 {% endblock %}
 {% block "content" %}

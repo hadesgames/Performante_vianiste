@@ -29,7 +29,7 @@ def _get_object_list(obj_list, fields=[], function_fields=[]):
     
 def problems(request, contest_id):
   function_fields = ["score"]
-  fields = ["name"]
+  fields = ["name", "correct"]
   problem_list = models.Contest.objects.get(pk = contest_id).problem_set.all()
   
   return HttpResponse(json.dumps(_get_object_list(problem_list, fields, function_fields)))

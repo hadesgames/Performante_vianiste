@@ -9,7 +9,7 @@
                   node: dojo.byId("row_filler_"+id),
                   properties: { width : data[id].score }}).play();
         }
-        if ( bonus_points == undefined ) 
+        if ( window.bonus_points == undefined ) 
           continue;
         var bonus_val;
         if ( data[id].correct >= bonus_points.length ) 
@@ -24,7 +24,6 @@
 
     }
     function display_init(data){
- //     alert(data);
       var list = dojo.byId("list");
       for (id in data)
       {
@@ -50,7 +49,7 @@
         dojo.create("div",{class:"right_filler",
                            innerHTML:"&nbsp;"},bar_div);
         dojo.create("p",{class:"score",id:"row_score_"+id,innerHTML: data[id].score},bar_div);
-        if (bonus_points != undefined )
+        if ( window.bonus_points != undefined )
         {
           dojo.create("p", {class:"score",innerHTML:"(+"},bar_div);
           dojo.create("p",{class:"score",id:"row_bonus_"+id,innerHTML: 0,style:"margin-left:0px;"},bar_div);

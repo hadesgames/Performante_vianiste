@@ -9,6 +9,8 @@
   <script>
     api_address = "{{ api_address }}"; 
     time_left = new Date(0,0,0,0,0,{{ time_left }});
+    {% block "js-init" %}
+    {% endblock %}
   </script>
   {% block "js" %}
   <script src="{{ STATIC_URL }}js/bars.js">

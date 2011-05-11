@@ -9,6 +9,17 @@
                   node: dojo.byId("row_filler_"+id),
                   properties: { width : data[id].score }}).play();
         }
+        if ( bonus_points == undefined ) 
+          continue;
+        var bonus_val;
+        if ( data[id].correct >= bonus_points.length ) 
+          bonus_val = 0;
+        else
+          bonus_val = bonus_points[data[id].correct];
+        if (bonus_val != dojo.byId("row_bonus_"+id).innerHTML)
+          dojo.byId("row_bonus_"+id).innerHTML = bonus_val;
+          
+        
       }
 
     }
@@ -39,8 +50,15 @@
         dojo.create("div",{class:"right_filler",
                            innerHTML:"&nbsp;"},bar_div);
         dojo.create("p",{class:"score",id:"row_score_"+id,innerHTML: data[id].score},bar_div);
+        if (bonus_points != undefined )
+        {
+          dojo.create("p", {class:"score",innerHTML:"(+"},bar_div);
+          dojo.create("p",{class:"score",id:"row_bonus_"+id,innerHTML: 0,style:"margin-left:0px;"},bar_div);
+          dojo.create("p",{class:"score",innerHTML:")",style:"margin-left:0px;"},bar_div);
+        }
 
       }
+      display_refresh(data);
       
     }
 

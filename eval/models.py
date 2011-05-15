@@ -8,10 +8,16 @@ class Contest(models.Model):
   start_time = models.DateTimeField()
   duration = models.IntegerField()
   fully_solved = models.IntegerField(default = 0)
+  
+  def __unicode__(self):
+    return "%s" % self.pk
+    
   def time_passed(self):
     return (datetime.datetime.now() - self.start_time).seconds
+    
   def time_passed_minutes(self):
     return self.time_passed() / 60
+    
   def time_remaining(self):
     return self.duration * 60 - self.time_passed();
   
@@ -25,8 +31,10 @@ class Problem(models.Model):
   # the minute in which the problem  was first solved
   time_solved = models.IntegerField(default = 0)
   
-  contest = models.ForeignKey(Contest)
-    
+  contest = models.ForeignKey(Contest, default = 1)
+  
+  def __unicode__(self):
+    return self.name 
 
   def score_can_change(self):
     return ( self.correct == 0 and
@@ -44,12 +52,15 @@ class Problem(models.Model):
 class Team(models.Model):
 
   name = models.CharField(max_length = 40)
-  contest = models.ForeignKey(Contest)
+  contest = models.ForeignKey(Contest, default = 1)
   solved = models.IntegerField(default = 0) 
   score = models.IntegerField(default = 120 )
   special_score = models.IntegerField(default = 0)
-  special_problem = models.ForeignKey(Problem)
-
+  #This is so wrong: 
+  special_problem = models.ForeignKey(Problem, default = 1)
+  
+  def __unicode__(self):
+    return "%s on contest %s" % (self.name, self.contest.pk)
 
 
 class Answer(models.Model):
@@ -64,6 +75,8 @@ class Answer(models.Model):
   problem = models.ForeignKey(Problem)
   solution = models.CharField(max_length = 10)
   
+  def __unicode__(self):
+    return "%s by %s" % (self.solution, self.team.name)
   
   
   

@@ -65,7 +65,7 @@ class Team(models.Model):
 
 class Answer(models.Model):
 
-  time = models.DateTimeField()
+  time = models.DateTimeField(default = datetime.datetime.now())
   team = models.ForeignKey(Team)
   status = models.IntegerField(default = 0)
   # 0 - Not evaluated

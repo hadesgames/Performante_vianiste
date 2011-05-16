@@ -57,7 +57,7 @@ class Team(models.Model):
   score = models.IntegerField(default = 120 )
   special_score = models.IntegerField(default = 0)
   #This is so wrong: 
-  special_problem = models.ForeignKey(Problem, default = 1)
+  special_problem = models.ForeignKey(Problem, blank = True, null = True)
   
   def __unicode__(self):
     return "%s on contest %s" % (self.name, self.contest.pk)

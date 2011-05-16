@@ -14,6 +14,8 @@
             cell.className =  "cell_score correct";
           else
             cell.className = "cell_score wrong";
+	  if (data[team_id].special_problem == data[team_id].score_list[problem_id].id)
+	    cell.className += " joly";
           cell.innerHTML = correct + wrong;
 
         }
@@ -43,10 +45,12 @@
 
         for (problem_id in data[team_id].score_list)
         {
-          if (team_id % 2)
+	  if (team_id % 2)
             color = "white";
           else
             color = "blue";
+          if (data[team_id].special_problem == data[team_id].score_list[problem_id].id)
+	    color += " joly";
           cell=dojo.create("td",{ 
                                   id : "cell_"+team_id+"_"+problem_id,
                                   class : "cell_score " + color,

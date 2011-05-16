@@ -60,7 +60,7 @@ class Team(models.Model):
   special_problem = models.ForeignKey(Problem, blank = True, null = True)
   
   def __unicode__(self):
-    return "%s on contest %s" % (self.name, self.contest.pk)
+    return "%s" % self.name
 
 
 class Answer(models.Model):
@@ -76,7 +76,7 @@ class Answer(models.Model):
   solution = models.CharField(max_length = 10)
   
   def __unicode__(self):
-    return "%s by %s" % (self.solution, self.team.name)
+    return "On %s by %s" % (self.problem.name, self.team.name)
   
   
   

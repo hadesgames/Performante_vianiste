@@ -54,7 +54,7 @@ class Team(models.Model):
   name = models.CharField(max_length = 40)
   contest = models.ForeignKey(Contest, default = 1)
   solved = models.IntegerField(default = 0) 
-  score = models.IntegerField(default = 120 )
+  score = models.IntegerField(default = 210 )
   special_score = models.IntegerField(default = 0)
   #This is so wrong: 
   special_problem = models.ForeignKey(Problem, blank = True, null = True)

@@ -35,7 +35,11 @@
 }
 .blue
 {
-  background-color: #cef;
+  background-color: #c3d9fc;  
+}
+.blue1
+{
+  background-color: #98bff9;
 }
 .joly
 {
@@ -46,11 +50,24 @@
 {
   background-color: #9cf198;
 }
+.correct1
+{
+  background-color: #8cce88;
+}
 .wrong
 {
   background-color: #fca9a9;
 }
+.wrong1
+{
+  background-color: #f08787;
+}
 .white
 {
   background-color: #f1f1f1;
+}
+.white1
+{
+  background-color: #e8e6e6;
+  
 }

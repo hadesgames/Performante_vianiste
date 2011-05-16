@@ -59,13 +59,13 @@ def do_work(answer):
     points_gained = -10
     problem.value += problem.score_can_change() and 2
     problem.save()
-  try: 
-    if problem == team.special_problem:
-      points_gained *= 2
-      team.special_score += points_gained
-  except ObjectDoesNotExist:
+  if team.special_problem is None:
     if contest.time_passed_minutes() >= 10:
       team.special_problem = contest.problem_set.order_by("pk")[0]
+  if problem == team.special_problem:
+    points_gained *= 2
+    team.special_score += points_gained
+    
     
   team.score += points_gained
   team.save()

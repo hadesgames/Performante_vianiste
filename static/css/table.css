@@ -5,6 +5,9 @@
 }
 .score_table_header
 {
+  border-style: solid;
+  border-color: white;
+  border-width: 0px;
   padding:4px 5px;
   background-color: #acf;
   font-weight: bold;
@@ -23,6 +26,9 @@
 }
 .cell_score
 {
+  border-style: solid;
+  border-color: white;
+  border-width: 0px;
   width:30px;
   text-align: center;
   padding: 4px 5px;
@@ -31,6 +37,11 @@
 {
   background-color: #cef;
 }
+.joly
+{
+  border-width: 2px;
+  border-color: black;
+}
 .correct
 {
   background-color: #9cf198;
@@ -38,4 +49,8 @@
 .wrong
 {
   background-color: #fca9a9;
+}
+.white
+{
+  background-color: #f1f1f1;
 }

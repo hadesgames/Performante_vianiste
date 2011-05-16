@@ -1,3 +1,4 @@
+import time
 from django.core.management import setup_environ
 from django.core.exceptions import ObjectDoesNotExist
 import settings
@@ -75,7 +76,7 @@ def work():
     answer_list = Answer.objects.filter(status = 0)
     for answer in answer_list:
       do_work(answer)
-    break
+    time.sleep(3)
 
 
 

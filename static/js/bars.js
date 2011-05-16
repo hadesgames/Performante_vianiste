@@ -1,13 +1,28 @@
+    bars_regress_coef = 3.0 / 5;
+    bars_coef = 1;
+    bars_max_len = 800;
+
     function display_refresh(data)
     {
+      var max_len = -1;
+      var resized = 0;
+      for (id in data)
+        max_len = Math.max(data[id].score , max_len);
+
+      while (max_len * bars_coef  > bars_max_len)
+      {
+        bars_coef *= bars_regress_coef;
+        resized = 1;
+      }
+
       for (id in data)
       {
-        if (data[id].score != dojo.byId("row_score_"+id).innerHTML)
+        if (data[id].score != dojo.byId("row_score_"+id).innerHTML || resized)
         {
           dojo.byId("row_score_"+id).innerHTML = data[id].score;
           dojo.animateProperty({
                   node: dojo.byId("row_filler_"+id),
-                  properties: { width : data[id].score }}).play();
+                  properties: { width : data[id].score * bars_coef }}).play();
         }
         if ( window.bonus_points == undefined ) 
           continue;
@@ -44,11 +59,10 @@
 
         dojo.create("div",{class:"filler",
                            id: "row_filler_"+id,
-                           innerHTML:"&nbsp;",
-                           style:"width: "+data[id].score+"px;"},bar_div);
+                           innerHTML:"&nbsp;",},bar_div);
         dojo.create("div",{class:"right_filler",
                            innerHTML:"&nbsp;"},bar_div);
-        dojo.create("p",{class:"score",id:"row_score_"+id,innerHTML: data[id].score},bar_div);
+        dojo.create("p",{class:"score",id:"row_score_"+id},bar_div);
         if ( window.bonus_points != undefined )
         {
           dojo.create("p", {class:"score",innerHTML:"(+"},bar_div);

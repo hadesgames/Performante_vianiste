@@ -48,9 +48,12 @@ def table(request, contest_id):
   team_list = models.Contest.objects.get(pk = contest_id).team_set.all()
   output=[]
   for team in team_list:
-    row={"name" : team.name, "score_list":[]}
+    row={"name" : team.name, "score_list":[], "special_problem" : -1}
+    if team.special_problem is not None:
+      row["special_problem"] = team.special_problem.pk; 
     for problem in problem_list:
       element={}
+      element["id"] = problem.id;
       #Inefficient part : 
       element["wrong_tries"] = models.Answer.objects.filter(team = team, problem = problem, status = 1).count()
       element["solved"] = models.Answer.objects.filter(team = team, problem = problem, status = 2).count()

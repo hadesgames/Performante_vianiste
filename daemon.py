@@ -12,8 +12,6 @@ bonus = [20, 15, 10, 8, 6, 5, 4, 3, 2, 1]
 solved_all_bonus = [100, 60, 40, 30, 20, 10]
 
 def do_work(answer):
-  # validate that the contest is still running
-  # TO DO: bonus for when a team completes all the problems
   team = answer.team
   problem = answer.problem
   contest = problem.contest
@@ -29,7 +27,7 @@ def do_work(answer):
     answer.status = 3
     answer.save()
     return 
-
+  extra_points = 0;
   if problem.solution == answer.solution :
     #good answer
     answer.status = 2
@@ -39,10 +37,12 @@ def do_work(answer):
       points_gained += bonus[problem.correct]
     except IndexError:
       pass
-    team.solved+=1
+      
+    team.solved += 1
+    
     if team.solved == contest.problem_set.count():
       try:
-        points_gained += solved_all_bonus[contest.fully_solved]
+        extra_points = solved_all_bonus[contest.fully_solved]
       except IndexError:
         pass
       contest.fully_solved += 1
@@ -66,8 +66,12 @@ def do_work(answer):
     points_gained *= 2
     team.special_score += points_gained
     
+<<<<<<< HEAD
     
   team.score += points_gained
+=======
+  team.score += points_gained + extra_points
+>>>>>>> daemon
   team.save()
   answer.save()
 
@@ -78,9 +82,5 @@ def work():
       do_work(answer)
     time.sleep(3)
 
-
-
 if __name__=="__main__" :
-  work()
-    
-    
+  work()    

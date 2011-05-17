@@ -49,9 +49,12 @@
 
         var color
         if (id % 2==0)
-          color="green";
+          color = "green";
         else
-          color="blue";
+          color = "blue";
+        if (data[id].score_can_change != undefined  && data[id].score_can_change == 0)
+          color = "inactive"
+          
         var bar_div=dojo.create("div",{class: color},li);
 
         dojo.create("div",{class:"left_filler",

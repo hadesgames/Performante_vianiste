@@ -1,14 +1,7 @@
 
-var time_left= new Date(0,0,0,1,2,3)
+
 function timer_redisplay()
 {
-    dojo.byId("timer_hours").innerHTML = time_left.getHours();
-    dojo.byId("timer_minutes").innerHTML = time_left.getMinutes();
-    dojo.byId("timer_seconds").innerHTML = time_left.getSeconds();
-}
-function timer_tick()
-{
-    time_left.setSeconds( time_left.getSeconds() - 1);
     if (time_left <= new Date(0,0,0,0,0,0) )
     {
       timer_timer.stop()
@@ -16,7 +9,14 @@ function timer_tick()
       timer_span.innerHTML="Concursul s-a terminat!";
       return ;
     }
-
+    
+    dojo.byId("timer_hours").innerHTML = time_left.getHours();
+    dojo.byId("timer_minutes").innerHTML = time_left.getMinutes();
+    dojo.byId("timer_seconds").innerHTML = time_left.getSeconds();
+}
+function timer_tick()
+{
+    time_left.setSeconds( time_left.getSeconds() - 1);
     timer_redisplay();
 }
 

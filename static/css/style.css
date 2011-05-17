@@ -30,7 +30,7 @@
   margin-left:10px;
   display:inline-block;
 }
-.blue, .green
+.blue, .green, .inactive
 {
   display:inline-block;
   padding:0px;
@@ -57,6 +57,26 @@ div.right_filler
 div.green .filler
 {
   background-color:green;
+}
+
+div.inactive .filler
+{
+  background-image:url("../images/bar.png");
+  background-repeat: repeat-x;
+  padding:0px 3px;
+}
+div.inactive .left_filler
+{
+  background-image:url("../images/cap_left.png");
+  background-repeat: no-repeat;
+  width: 8px;
+}
+div.inactive .right_filler
+{
+  background-image:url("../images/cap_right.png");
+  background-repeat: no-repeat;
+  width:8px;
+
 }
 div.blue .filler
 {

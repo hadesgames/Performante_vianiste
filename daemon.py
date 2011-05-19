@@ -66,12 +66,7 @@ def do_work(answer):
     points_gained *= 2
     team.special_score += points_gained
     
-<<<<<<< HEAD
-    
-  team.score += points_gained
-=======
   team.score += points_gained + extra_points
->>>>>>> daemon
   team.save()
   answer.save()
 

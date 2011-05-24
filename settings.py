@@ -5,7 +5,7 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
   ('Tache Alexandru', 'hadesgames@gmail.com'),
-    # ('Your Name', 'your_email@example.com'),
+     ('Neagu Rares', 'neagu1000@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -60,7 +60,7 @@ MEDIA_URL = ''
 # Example: "/home/media/media.lawrence.com/static/"
 
 #MODIFY:
-STATIC_ROOT = '/home/hadesgames/Performante_vianiste/static'
+STATIC_ROOT = 'D:\Dropbox\Performante_vianiste\Performante_vianiste\static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"

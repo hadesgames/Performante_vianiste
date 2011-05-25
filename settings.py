@@ -60,7 +60,7 @@ MEDIA_URL = ''
 # Example: "/home/media/media.lawrence.com/static/"
 
 #MODIFY:
-STATIC_ROOT = 'D:\Dropbox\Performante_vianiste\Performante_vianiste\static'
+STATIC_ROOT = 'D:\GitHub\Performante_vianiste\eval\static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"

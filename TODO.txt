@@ -1,0 +1,14 @@
+*Set variables at 0 before contest.
+*NO CONTEST YET
+*Ori Engleza.. ori Romana
+*Mai intai team, apoi problem
+*Iframe cat e fiecare problema
+*Toate informatiile pe un singur ecran
+
+
+
+Inca 2 minute pana cand se introduc toate datele
+
+
+---
+Programul functioneaza perfect ca si server

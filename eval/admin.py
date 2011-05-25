@@ -27,7 +27,7 @@ class TeamAdmin(admin.ModelAdmin):
 admin.site.register(Team, TeamAdmin)
 
 class AnswerAdmin(admin.ModelAdmin):
-  fields = ("problem", "team", "solution")
+  fields = ("team", "problem", "solution")
   
 
 admin.site.register(Answer, AnswerAdmin)

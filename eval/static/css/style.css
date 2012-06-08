@@ -1,13 +1,19 @@
-#list
+#list, #list2
 {
   padding-left:10px;
   padding-top:30px;
+  display: inline-block;
+  float: left;
+}
+
+#list2 {
+  float: left;
 }
 .row
 {
-  display:block; 
+  display: block;
+  max-width: 830px;
   list-style-type:none; 
-  width: 2300px;
   margin:0px;
   padding:0px;
   margin-bottom:10px;

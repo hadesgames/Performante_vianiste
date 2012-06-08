@@ -1,6 +1,6 @@
     bars_regress_coef = 3.0 / 5;
     bars_coef = 1;
-    bars_max_len = 800;
+    bars_max_len = 450;
 
     function display_refresh(data)
     {
@@ -42,6 +42,9 @@
       var list = dojo.byId("list");
       for (id in data)
       {
+        if (id > 15)
+          list = dojo.byId("list2")
+
         var li=dojo.create("li", { class: "row" ,id:"row_"+id },list);
         var name_div=dojo.create("div",{ class: "name" },li);
         dojo.create("p",{class:"p_name",
